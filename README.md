@@ -47,5 +47,5 @@ The project create a readme.md file through command line prompts
 [Email](nicholson_travis@hotmail.com)
 
 ## License
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 (https://opensource.org/licenses/MIT)
