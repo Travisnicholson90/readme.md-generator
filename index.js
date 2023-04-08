@@ -1,13 +1,7 @@
-const express = require('express');
-
-const app = express();
-
 const path = require('path');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-
-// TODO: Create an array of questions for user input
 const questions = [
     {
         type: 'input',
@@ -41,18 +35,27 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Enter any languages used in this project',
-        name: 'languages'
+        message: 'Enter any programming languages used in this project',
+        name: 'languages',
+        filter: ((input) => {
+           return input.split(' ').map((language) => language + '\n-').join(' ');
+        }),
     },
     {
         type: 'input',
         message: 'Enter any frameworks used in this project',
-        name: 'frameworks'
+        name: 'frameworks',
+        filter: ((input) => {
+            return input.split(' ').map((language) => language + '\n-').join(' ');
+         }),
     },
     {
         type: 'input',
         message: 'Enter any libraries / packages used in this project',
-        name: 'libraries'
+        name: 'libraries',
+        filter: ((input) => {
+            return input.split(' ').map((language) => language + '\n-').join(' ');
+         }),
     },
     {
         type: 'input',
@@ -82,10 +85,17 @@ const questions = [
             'PERL',
             'SIL',
             'UNLICENSE',
-            'ZLIB'
+            'ZLIB',
+            'GNU',
+            'ECLIPSE',
+            'CREATIVE COMMONS',
+            'BOOST',
+            'BSD',
+            'APACHE',
+            'The ORGANIZATION FOR ETHICAL SOURCE',
         ],
-        filter: (input) => input.toUpperCase(),
-    },
+        filter: (rawlist => rawlist.toUpperCase()),
+    }   
 ]
 
 const init = () => {
@@ -109,7 +119,7 @@ const init = () => {
     const { licenseBadge, licenseLink } = renderLicenseData(license);
     const readme =  
 `
-# <${projectName}>
+# < ${projectName} >
 
 ## Description
 ${description}
@@ -128,9 +138,13 @@ ${description}
 ### Screenshot
 ![](${screenshot})
 
-### Built with
+## Built with
+
+### Programming Languages
 - ${languages}
+### Frameworks
 - ${frameworks}
+### Libraries / Packages
 - ${libraries}
 
 ## Contributing
@@ -198,8 +212,30 @@ const renderLicenseData = (license) => {
     } else if (license === 'ZLIB') {
         licenseBadge = '[![License: Zlib](https://img.shields.io/badge/License-Zlib-lightgrey.svg)]';
         licenseLink = '(https://opensource.org/licenses/Zlib)';
+    } else if (license === 'APACHE') {
+        licenseBadge = '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]';
+        licenseLink = '(https://opensource.org/licenses/Apache-2.0)';
+    } else if (license === 'BOOST') {
+        licenseBadge = '[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)]';
+        licenseLink = '(https://www.boost.org/LICENSE_1_0.txt)';
+    } else if (license === 'BSD') {
+        licenseBadge = '[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)]';
+        licenseLink = '(https://opensource.org/licenses/BSD-3-Clause)';
+    } else if (license === 'CREATIVE COMMONS') {
+        licenseBadge = '[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)]';
+        licenseLink = '(http://creativecommons.org/publicdomain/zero/1.0/)';
+    } else if (license === 'ECLIPSE') {
+        licenseBadge = '[![License](https://img.shields.io/badge/License-EPL_1.0-red.svg)]';
+        licenseLink = '(https://opensource.org/licenses/EPL-1.0)';
+    } else if (license === 'GNU') {
+        licenseBadge = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]';
+        licenseLink = '(https://www.gnu.org/licenses/gpl-3.0)';
+    } else if (license === 'THE ORGANIZATION FOR ETHICAL SOURCE') {
+        licenseBadge = '[![License: Hippocratic 2.1](https://img.shields.io/badge/License-Hippocratic_2.1-lightgrey.svg)]';
+        licenseLink = '(https://firstdonoharm.dev)';
     }
-    return {licenseLink, licenseBadge};
+
+    return { licenseLink, licenseBadge };
 };
 
 init();

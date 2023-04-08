@@ -1,8 +1,8 @@
 
-# <Proffessional readme generator>
+# < Readme.md Generator >
 
 ## Description
-Create a readme.md file through command line prompts
+The project create a readme.md file through command line prompts
 
 ## Table of contents
 - [Installation](#Installation)
@@ -18,16 +18,24 @@ Create a readme.md file through command line prompts
 ### Screenshot
 ![](./images/fireshot)
 
-### Built with
+## Built with
+
+### Programming Languages
 - JavaScript
-- n/a
+- HTML
+-
+### Frameworks
+- 
+-
+### Libraries / Packages
 - Inquirer
+-
 
 ## Contributing
 - Travis Nicholson
 
 ## Tests
-- install node.js, run node [filename] through the terminal and follow the prompts
+- install node.js and run the command node [current file] in the command line and follow the prompts
 
 ## Questions
 
