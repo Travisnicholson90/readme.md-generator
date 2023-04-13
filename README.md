@@ -51,6 +51,6 @@ The readme.md generator creates a readme.md file from command line prompts and i
 [Travis Nicholson](nicholson_travis@hotmail.com)
 
 ## License
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
+[License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
  - (https://opensource.org/licenses/MIT)
 
