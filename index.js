@@ -10,6 +10,7 @@ const init = () => {
         const { 
             projectName,
             description, 
+            installation,
             usage, 
             screenshot,
             contributors,
@@ -36,6 +37,9 @@ ${description}
 - [Tests](#Tests)
 - [Questions](#Questions)
 - [license](#license)
+
+## Installation
+- ${installation}
 
 ## Usage
 - ${usage}
@@ -76,7 +80,7 @@ writeToFile(readme)
 };
    
 const writeToFile = (readme) =>  {
-    fs.writeFile('README.md', readme, (err) => {
+    fs.writeFile('sampleREADME.md', readme, (err) => {
         if(err) {
             console.error(err)
         } else {
